@@ -1,8 +1,10 @@
+import { Todo } from './../../todo/entities/todo.entity';
 import {
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Roles } from './../types/roles.enum';
@@ -26,6 +28,9 @@ export class User {
 
   @Column('bool', { default: true })
   active: boolean;
+
+  @OneToMany(() => Todo, (todo) => todo.user)
+  todos: Todo[];
 
   @BeforeInsert()
   @BeforeUpdate()

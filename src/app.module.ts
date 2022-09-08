@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { EnvConfiguration, JoiValidationSchema } from './config';
 import { SeedModule } from './seed/seed.module';
+import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { SeedModule } from './seed/seed.module';
     AuthModule,
     SeedModule,
     CommonModule,
+    TodoModule,
   ],
   exports: [ConfigModule],
 })
