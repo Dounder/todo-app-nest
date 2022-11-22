@@ -9,6 +9,9 @@ export class Todo {
   @Column('text')
   text: string;
 
+  @Column('boolean', { default: false })
+  completed: boolean;
+
   @Column('numeric', { default: new Date().getTime() })
   createdAt: number;
 

@@ -24,7 +24,7 @@ export class TodoService {
     try {
       const todo = this.todoRepository.create({ ...createTodoDto, user });
       await this.todoRepository.save(todo);
-      return { msg: 'Created', id: todo.id, statusCode: 201 };
+      return { msg: 'Created', statusCode: 201, todo };
     } catch (error) {
       handleDBErrors(error);
     }
@@ -61,9 +61,9 @@ export class TodoService {
   }
 
   async update(id: string, updateTodoDto: UpdateTodoDto) {
-    const { text } = updateTodoDto;
+    const { text, completed } = updateTodoDto;
 
-    const todo = await this.todoRepository.preload({ id, text });
+    const todo = await this.todoRepository.preload({ id, text, completed });
 
     if (!todo) throw new NotFoundException(`Todo with id ${id} not found.`);
 

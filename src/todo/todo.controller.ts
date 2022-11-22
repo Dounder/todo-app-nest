@@ -13,7 +13,6 @@ import {
 import { Auth } from './../auth/decorators/auth.decorator';
 import { GetUser } from './../auth/decorators/get-user.decorator';
 import { User } from './../auth/entities/user.entity';
-import { Roles } from './../auth/types/roles.enum';
 import { PaginationDto } from './../common/dto/pagination.dto';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
@@ -48,7 +47,6 @@ export class TodoController {
   }
 
   @Delete(':id')
-  @Auth(Roles.admin)
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.todoService.remove(id);
   }
